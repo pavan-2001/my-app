@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
 
 const loginOptions = [
     'Student', 
@@ -172,7 +173,7 @@ export default function LoginPortal() {
                             className={styles.button}
                             startIcon = {<AccountCircleIcon/>}>Sign UP</Button>
                         </div>
-                        <p className={styles.signUp} >Have an account ? <spam className = {styles.spam} >Sign IN</spam></p>
+                        <p className={styles.signUp} >Have an account ? <spam to='Sign IN' className = {styles.spam} ><Link to='Sign IN' >Sign IN</Link></spam></p>
                     </Paper>
                 </Grid>
             </Grid>
