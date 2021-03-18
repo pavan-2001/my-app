@@ -1,4 +1,4 @@
-import React, {useState, Fragment} from 'react';
+import React, {useState, Fragment, useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -20,7 +20,7 @@ const loginOptions = [
 const useStyles = makeStyles((theme) => ({
     root : {
         flexGrow : 1, 
-        marginTop : '3%', 
+        marginTop : '5%', 
     }, 
     gridContainer : {
         justifyContent : 'center', 
@@ -31,13 +31,15 @@ const useStyles = makeStyles((theme) => ({
         padding : theme.spacing(1), 
         textAlign : 'center', 
         margin : 'auto',
-        background : 'linear-gradient(45deg, #FE6B8B 30%,#d500f9 90%)', 
+        background : 'linear-gradient(#ff4081,#f50057 30%,#c51162 90%)', 
         color : 'white', 
-        boxShadow : '0 3px 50px 2px #dd33fa',
+        boxShadow : '5px 5px 15px 5px #880e4f',
+        borderRadius : '3%'
     }, 
     collageName: {
         fontSize : 35, 
-        width : 'auto',     
+        width : 'auto',   
+        margin : ''  
     },
     loginPortal : {
         fontSize : 25, 
@@ -68,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     button : {
-        backgroundColor : '#9500ae', 
+        backgroundColor : '#ad1457', 
         width : '60%', 
         variant : 'outlined',
         '&:hover' : {
@@ -77,12 +79,23 @@ const useStyles = makeStyles((theme) => ({
         color : 'white', 
     },
     signUp : {
+        marginTop : theme.spacing(2),
         marginLeft : theme.spacing(19),
         fontSize : 17, 
+        margin : 'auto'
     },
     spam : {
-        color : '#880e4f', 
+        color : 'white', 
         cursor : 'pointer', 
+    }, 
+    errorMsg : {
+        color : 'white',
+        margin : 'auto', 
+        marginTop : theme.spacing(2)
+    }, 
+    box : {
+        margin : 'auto', 
+        marginTop : theme.spacing(3), 
     }
 }));
 
@@ -94,7 +107,8 @@ export default function LoginPortal() {
     const styles = useStyles();
     const [passwordIcon, setPasswordIcon] = useState(<VisibilityOffIcon/>);
     const [passwordType, setPasswordType] = useState('password');
-    const [roleLabel, setRoleLabel] = useState('Employee Id or Roll No. ');
+    const [roleLabel, setRoleLabel] = useState('ID');
+    const [error, setError] = useState('');
 
     const handlePasswordIcon = () => {
         if(passwordType === 'password') {
@@ -107,6 +121,15 @@ export default function LoginPortal() {
         }
     }
 
+    useEffect(() => {
+        if(loginType === 'Student')
+        {
+            setRoleLabel('Roll No.');
+        }
+        else {
+            setRoleLabel('Employee ID');
+        }
+    },[loginType,setRoleLabel]);
     
     return (
         <div className={styles.root}>
@@ -115,7 +138,8 @@ export default function LoginPortal() {
                     <Paper className={styles.paper}>
                         <p className={styles.collageName} ><strong>Maharishi Markandeshwar University</strong></p>
                         <p className={styles.loginPortal} >Login Portal</p>
-                        <Fragment>
+                        <p className={styles.errorMsg} >{error}</p>
+                        <div className={styles.box} >
                             <TextField 
                             select
                             label = 'Login Type' 
@@ -147,7 +171,7 @@ export default function LoginPortal() {
                             variant = 'container'
                             className={styles.button}
                             startIcon = {<AccountCircleIcon/>}>Sign In</Button>
-                        </Fragment>
+                        </div>
                         <p className={styles.signUp} >Don't Have an account ? <spam className = {styles.spam} >Sign up</spam></p>
                     </Paper>
                 </Grid>
