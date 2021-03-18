@@ -82,12 +82,12 @@ const useStyles = makeStyles((theme) => ({
     signUp : {
         marginTop : theme.spacing(2),
         marginLeft : theme.spacing(19),
-        fontSize : 17, 
+        fontSize : 18, 
         margin : 'auto'
     },
     spam : {
         color : 'white', 
-        cursor : 'pointer', 
+        cursor : 'pointer',
     }, 
     errorMsg : {
         color : 'white',

@@ -138,7 +138,7 @@ export default function LoginPortal() {
                 <Grid item xs={5}>
                     <Paper className={styles.paper}>
                         <p className={styles.collageName} ><strong>Maharishi Markandeshwar University</strong></p>
-                        <p className={styles.loginPortal} >Sign UP Portal</p>
+                        <p className={styles.loginPortal} >Create Account</p>
                         <p className={styles.errorMsg} >{error}</p>
                         <div className={styles.box} >
                             <TextField 
