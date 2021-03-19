@@ -10,6 +10,8 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import Divider from '@material-ui/core/Divider';
+import logo from './Maharishi-Markandeshwar-University.png';
 
 const loginOptions = [
     'Student', 
@@ -20,13 +22,12 @@ const loginOptions = [
 
 const useStyles = makeStyles((theme) => ({
     root : {
-        flexGrow : 1, 
-        marginTop : '5%', 
+        flexGrow : 1,
+        margin : 'auto',
     }, 
     gridContainer : {
         justifyContent : 'center', 
         flex : 1, 
-        marginTop : '2%'
     },  
     paper : {
         padding : theme.spacing(1), 
@@ -35,15 +36,11 @@ const useStyles = makeStyles((theme) => ({
         background : 'linear-gradient(#ff4081,#f50057 30%,#c51162 90%)', 
         color : 'white', 
         boxShadow : '5px 5px 15px 5px #880e4f',
-        borderRadius : '3%'
+        borderRadius : '3%', 
+        marginTop : theme.spacing(-22)
     }, 
-    collageName: {
-        fontSize : 35, 
-        width : 'auto',   
-        margin : ''  
-    },
     loginPortal : {
-        fontSize : 25, 
+        fontSize : 35, 
         marginTop : '6%', 
         marginBottom : '5%'
     }, 
@@ -80,10 +77,10 @@ const useStyles = makeStyles((theme) => ({
         color : 'white', 
     },
     signUp : {
+        margin : 'auto', 
+        marginLeft : theme.spacing(2),
         marginTop : theme.spacing(2),
-        marginLeft : theme.spacing(19),
-        fontSize : 18, 
-        margin : 'auto'
+        fontSize : 17, 
     },
     spam : {
         color : 'white', 
@@ -92,11 +89,35 @@ const useStyles = makeStyles((theme) => ({
     errorMsg : {
         color : 'white',
         margin : 'auto', 
-        marginTop : theme.spacing(2)
+        marginTop : theme.spacing(5)
     }, 
     box : {
         margin : 'auto', 
-        marginTop : theme.spacing(3), 
+        marginTop : theme.spacing(7), 
+    }, 
+    forgotPassword : {
+        cursor : 'pointer', 
+        margin : 'auto',  
+        marginTop : theme.spacing(2),
+        fontSize : 17
+    }, 
+    divider : {
+        color : 'white', 
+        margin : 'auto', 
+        marginTop : theme.spacing(10), 
+        width : '75%', 
+        backgroundColor : 'white', 
+    }, 
+    footer : {
+        margin : 'auto', 
+        marginLeft : theme.spacing(47), 
+        color : 'white', 
+        marginTop : theme.spacing(2),
+        marginBottom : theme.spacing(4), 
+    }, 
+    logo : {
+        width : '10%', 
+        margin : 'auto',         
     }
 }));
 
@@ -134,11 +155,11 @@ export default function LoginPortal() {
     
     return (
         <div className={styles.root}>
+        <a href='https://www.mmumullana.org/overview/'><img className={styles.logo} src={logo} /></a>
             <Grid container className={styles.gridContainer}>
                 <Grid item xs={5}>
                     <Paper className={styles.paper}>
-                        <p className={styles.collageName} ><strong>Maharishi Markandeshwar University</strong></p>
-                        <p className={styles.loginPortal} >Login Portal</p>
+                        <p className={styles.loginPortal} ><strong>Login Portal</strong></p>
                         <p className={styles.errorMsg} >{error}</p>
                         <div className={styles.box} >
                             <TextField 
@@ -173,10 +194,13 @@ export default function LoginPortal() {
                             className={styles.button}
                             startIcon = {<AccountCircleIcon/>}>Sign In</Button>
                         </div>
+                        <p className={styles.forgotPassword} >Forgot Password</p>
                         <p className={styles.signUp} >Don't Have an account ? <spam className = {styles.spam} ><Link to='Sign UP' >Sign UP</Link></spam></p>
                     </Paper>
                 </Grid>
             </Grid>
+            <Divider className={styles.divider} />
+            <p className={styles.footer} > &copy; 2021 MAHARISHI MARKANDESHWAR UNIVERSITY, AMBALA (HARYANA).ALL RIGHTS RESERVED.<br/>DEVELOPERS - PAVAN KUMAR , SANSKAR RAWAT , UDAY PANDIT , KAPIL KADIAN (B-TECH, CSE)<br/>BATCH :  2019 - 2023</p>
         </div>
     );
 }
